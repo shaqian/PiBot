@@ -1,0 +1,10 @@
+$shadow: 0 2px 5px 0 rgba(0,0,0,0.5);
+$text-shadow: 0.05rem 0.05rem rgba(0, 0, 0, 1);
+
+@mixin rounded-corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+$font-size: 0.9rem;

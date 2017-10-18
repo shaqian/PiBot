@@ -1,3 +1,5 @@
+### [中文文档](/README-CN.md)
+
 # PiBot
 
 Raspberry Pi robot with iOS, Android app and web UI.
@@ -39,8 +41,6 @@ Raspberry Pi robot with iOS, Android app and web UI.
   Mini speaker with 3.5mm jack.
 
 * **Robot Car Kit:** ZK-4WD
-
-  ![Robot Car Kit](/images/parts/car.jpg)
 
 * **Motor driver**: L298n
 
@@ -238,7 +238,7 @@ git clone https://github.com/shaqian/PiBot.git
 
 3. Start node, run ```node```.
 
-3. Initialize output:
+4. Initialize output:
   ```
   var rpio = require('rpio');
   rpio.open(29, rpio.OUTPUT, rpio.LOW);
@@ -247,7 +247,7 @@ git clone https://github.com/shaqian/PiBot.git
   rpio.open(40, rpio.OUTPUT, rpio.LOW);
   ```
 
-4. Go forward:
+5. Go forward:
   ```
   rpio.write(29, rpio.LOW);
   rpio.write(31, rpio.HIGH);
@@ -255,7 +255,7 @@ git clone https://github.com/shaqian/PiBot.git
   rpio.write(40, rpio.HIGH);
   ```
 
-5. Go backward:
+6. Go backward:
   ```
   rpio.write(29, rpio.HIGH);
   rpio.write(31, rpio.LOW);
@@ -263,7 +263,7 @@ git clone https://github.com/shaqian/PiBot.git
   rpio.write(40, rpio.LOW);
   ```
 
-6. Stop:
+7. Stop:
   ```
   rpio.write(29, rpio.LOW);
   rpio.write(31, rpio.LOW);

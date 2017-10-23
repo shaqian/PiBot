@@ -6,7 +6,6 @@ var execSync = require('child_process').execSync;
 var spawn = require('child_process').spawn;
 var express = require('express');
 var fs = require('fs');
-var https = require('https');
 var multer  = require('multer');
 var config = require('./config');
 var motor = require('./motor');
@@ -90,20 +89,13 @@ io.on('connection', function(socket) {
 
   socket.on('camera', (msg) => {
     dutyCycle = (msg + max - min) / 2 + min;
-    var cmd = config.baseDir + 'bin/direct.py ' + dutyCycle;
-    _execute(cmd);
+    _moveCam(dutyCycle);
   });
 
   socket.on('music', (msg) => {
-    if (musicProcess) {
-      var cmd = 'kill ' + musicProcess.pid;
-      _execute(cmd);
-    }
+    _stopMusic();
     if (music !== msg) {
-      var filename = musicDir + msg;
-      musicProcess =  spawn('mpg123', [ filename ], {detached: true});
-      console.log(musicProcess.pid);
-      music = msg;
+      _playMusic(msg);
     } else {
       music = undefined;
     }
@@ -158,13 +150,11 @@ io.on('connection', function(socket) {
         break;
       case 'camleft':
         dutyCycle = dutyCycle + 1.5 > max ? dutyCycle: dutyCycle + 1.5;
-        var cmd = config.baseDir + 'bin/direct.py ' + dutyCycle;
-        _execute(cmd);
+        _moveCam(dutyCycle);
         break;
       case 'camright':
         dutyCycle = dutyCycle - 1.5 < min ? dutyCycle: dutyCycle - 1.5;
-        var cmd = config.baseDir + 'bin/direct.py ' + dutyCycle;
-        _execute(cmd);
+        _moveCam(dutyCycle);
         break;
       default:
         motor.stop();
@@ -192,10 +182,14 @@ var _execute = function (cmd) {
   });
 }
 
+var _moveCam = (dutyCycle) => {
+  var cmd = config.baseDir + 'bin/direct.py ' + dutyCycle;
+  _execute(cmd);
+}
+
 // Initialize servo to middle position
 if (process.platform == 'linux') {
-  var cmd = config.baseDir + 'bin/direct.py 7';
-  _execute(cmd);
+  _moveCam(7);
 }
 
 // Initialize motor output
@@ -220,6 +214,21 @@ var _stopRecording = function () {
   }, 5*1000);
 }
 
+var _stopMusic = () => {
+  if (musicProcess) {
+    var cmd = 'kill ' + musicProcess.pid;
+    _execute(cmd);
+  }
+}
+
+var _playMusic = (msg) => {
+  var filename = musicDir + msg;
+  musicProcess =  spawn('mpg123', [ filename ], {detached: true});
+  music = msg;
+  console.log('mpg123 Process ID:' + musicProcess.pid);
+}
+
+
 var _refreshVideos = function () {
   console.log(videDir);
   fs.readdir(videDir, function (err, files) {
@@ -237,6 +246,7 @@ var _refreshVideos = function () {
 }
 
 var _refreshMusicFiles = function () {
+  console.log(musicDir);
   fs.readdir(musicDir, function (err, files) {
     console.log(files);
     var music = [];

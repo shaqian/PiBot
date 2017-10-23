@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import Slider from "react-native-slider";
-import Octicons from 'react-native-vector-icons/Octicons';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -54,7 +53,7 @@ class Control extends Component {
       <View style={styles.container}>
         <View style={styles.middleContainer}>
           <TouchableOpacity onPress={() => setControl('remote')}>
-            <Octicons name={'settings'} size={30} color="white" />
+            <Feather name={'sliders'} size={30} color="white" />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setControl('audio')}>
             <MaterialIcons name={'keyboard-voice'} size={30} color="white" />

@@ -32,7 +32,6 @@
     "foundation-sites": "^6.3.1",
     "hls.js": "^0.7.9",
     "jquery": "^3.2.1",
-    "react-dropdown": "^1.2.3",
     "react-icons": "^2.2.3",
     "react-modal": "^2.2.2",
     "react-redux": "^5.0.3",

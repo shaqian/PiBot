@@ -6,17 +6,17 @@ Raspberry Pi robot with iOS, Android app and web UI.
 
 ## Demo
 
-![Raspberry Pi](/images/pibotapp.gif)
+![App](/images/pibotapp.gif)
 
 ## UI
 
-![Raspberry Pi](/images/pibotapp.png)
+![App](/images/pibotapp.png)
 
-![Raspberry Pi](/images/pibotweb.png)
+![Vision](/images/pibotweb.png)
 
 ## Assembly
 
-![Raspberry Pi](/images/assembly.gif)
+![Assembly](/images/assembly.gif)
 
 ## Parts list
 
@@ -64,7 +64,7 @@ Raspberry Pi robot with iOS, Android app and web UI.
 
 * **IR Transmitter**
 
-  I originally used the IR module for Arduino: KY-005, but the range was short.
+  Initially I used the IR module for Arduino: KY-005, but the range was short.
 
   Then I found [this](https://item.taobao.com/item.htm?id=38698599143) (keyword: 1/3W High Power
 IR Transmitter Module For Arduino) that can get several meters.
@@ -510,7 +510,7 @@ git clone https://github.com/shaqian/PiBot.git
   sudo npm start
   ```
 
-4. Navigate to ```http[s]://[IP-of-Raspberry-Pi]``` in a web browser (replacing IP-of-Raspberry-Pi with the actual IP address, ie: *192.168.1.16*).
+4. Navigate to ```http[s]://[IP-of-Raspberry-Pi]``` in a web browser (replacing [IP-of-Raspberry-Pi] with the actual IP address, ie: *192.168.1.16*).
 
 ##  Run the Mobile App
 

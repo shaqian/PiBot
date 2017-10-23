@@ -4,17 +4,17 @@
 
 ## 演示
 
-![Raspberry Pi](/images/pibotapp.gif)
+![App](/images/pibotapp.gif)
 
 ## 界面
 
-![Raspberry Pi](/images/pibotappcn.png)
+![App](/images/pibotappcn.png)
 
-![Raspberry Pi](/images/pibotwebcn.png)
+![Web](/images/pibotwebcn.png)
 
 ## 组装
 
-![Raspberry Pi](/images/assembly.gif)
+![Assembly](/images/assembly.gif)
 
 ## 元件
 
@@ -22,21 +22,21 @@
 
 * **树莓派摄像头**: 8MP Raspberry Pi Camera v2
 
-* **Micro SD内存卡**
+* **Micro SD 内存卡**
 
-  8G或以上.
+  8G 或以上.
 
-* **USB声卡**
+* **USB 声卡**
 
   我用的是[这个](https://detail.tmall.com/item.htm?id=43007935397)
 
 * **麦克风**
 
-  3.5mm接口，我用的是[这个](https://detail.tmall.com/item.htm?id=21808596718)
+  3.5mm 接口，我用的是[这个](https://detail.tmall.com/item.htm?id=21808596718)
 
 * **扬声器**
 
-  3.5mm接口迷你扬声器
+  3.5mm 接口迷你扬声器
 
 * **小车底盘**: ZK-4WD
 
@@ -48,17 +48,17 @@
 
 * **电池电源**
 
-  两节18650 (3.7v)电池加电池壳，给马达驱动供电
+  两节 18650 (3.7v) 电池加电池壳，给马达驱动供电
 
 * **DC降压模块**: LM2596S
 
-  7.4v转5v，给舵机供电
+  7.4v 转 5v，给舵机供电
 
 * **舵机**: SG90 9g
 
 * **舵机底座**
 
-  我用的是[这个](https://item.taobao.com/item.htm?id=531675916868)，但只用了单层，因为树莓派只有2组硬件 PWM，需要留一组给红外输出
+  我用的是[这个](https://item.taobao.com/item.htm?id=531675916868)，但只用了单层，因为树莓派只有 2 组硬件 PWM，需要留一组给红外输出
 
 * **红外发射模块**
 
@@ -72,7 +72,7 @@
 
 * **杜邦线**
 
-  20或30厘米，公对母
+  20 或 30 厘米，公对母
 
 * **电阻**
 
@@ -84,7 +84,7 @@
 
 马达驱动和马达
 
-9v电源实际上是2节两节18650电池
+9v 电源实际上是 2 节两节 18650 电池
 
 ![Motor Schematic](/images/motor_schem.png)
 
@@ -94,7 +94,7 @@
 
 舵机
 
-9v电源实际上是2节两节18650电池
+9v 电源实际上是两节 18650 电池
 
 ![Servo Schematic](/images/servo_schem.png)
 
@@ -128,61 +128,61 @@
 
 ### 1） 安装树莓派系统 (Mac)
 
-* (可选) 格式化SD卡
+* (可选) 格式化 SD 卡
 
-  1. 安装SD Card Formatter](https://www.sdcard.org/downloads/formatter_4/)。
+  1. 安装 [SD Card Formatter](https://www.sdcard.org/downloads/formatter_4/)。
 
-  2. 打开***SD Card Formatter***选择***Overwrite Format***。
+  2. 打开 ***SD Card Formatter*** 选择 ***Overwrite Format***。
 
-  3. 点击***Format***。
+  3. 点击 ***Format***。
 
-* 从镜像安装Raspbian ([官方文档](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md))
+* 从镜像安装 Raspbian ([官方文档](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md))
 
-  1. 下载.zip文件[RASPBIAN STRETCH WITH DESKTOP](https://www.raspberrypi.org/downloads/raspbian/)。
+  1. 下载 .zip 文件 [RASPBIAN STRETCH WITH DESKTOP](https://www.raspberrypi.org/downloads/raspbian/)。
 
-  2. 解压并得到*2017-07-05-raspbian-jessie.img*。
+  2. 解压并得到 *2017-07-05-raspbian-jessie.img*。
 
-  3. 打开终端，运行```diskutil list```列出所有disk。
+  3. 打开终端，运行```diskutil list```列出所有 disk。
 
-  4. SD卡插入读卡器并连接电脑。
+  4. SD 卡插入读卡器并连接电脑。
 
-  5. 再次运行```diskutil list```，找到SD卡的disk (并非partition)，比如*disk3*，而不是*disk3s1*。
+  5. 再次运行```diskutil list```，找到 SD 卡的 disk (并非 partition)，比如 *disk3*，而不是 *disk3s1*。
 
-  6. 运行```sudo diskutil unmountDisk /dev/disk[n]```解挂SD卡 (将[n]替换为上一步得到的disk编号，比如：*/dev/disk3*)。
+  6. 运行```sudo diskutil unmountDisk /dev/disk[n]```解挂SD卡 (将 [n] 替换为上一步得到的 disk 编号，比如：*/dev/disk3*)。
 
-  7. 将镜像拷贝至SD卡：```sudo dd bs=1m if=[path-to-the-image-file] of=/dev/rdisk[n] conv=sync``` (替换[path-to-the-image-file]为镜像文件路径，例如 *~/Downloads/2017-07-05-raspbian-jessie.img*, 并将 [n] 替换为正确的disk编号，比如： */dev/rdisk3*)。
+  7. 将镜像拷贝至 SD 卡：```sudo dd bs=1m if=[path-to-the-image-file] of=/dev/rdisk[n] conv=sync``` (替换 [path-to-the-image-file] 为镜像文件路径，例如 *~/Downloads/2017-07-05-raspbian-jessie.img*, 并将 [n] 替换为正确的 disk 编号，比如： */dev/rdisk3*)。
 
 
 ### 2) SSH至Raspberry Pi ([官方文档](https://www.raspberrypi.org/documentation/remote-access/ssh/))
 
  1. 启用SSH:
 
-    2016年11月之后发布的Raspbian默认关闭了SSH，启用方式是在SD卡的根目录创建一个名为***ssh***的文件，不带任何扩展名。
+    2016 年 11 月之后发布的 Raspbian 默认关闭了 SSH，启用方式是在 SD 卡的根目录创建一个名为 ***ssh*** 的文件，不带任何扩展名。
 
- 2. 从电脑弹出SD卡，并插入树莓派。
+ 2. 从电脑弹出 SD 卡，并插入树莓派。
 
  3. 将树莓派用网线连接至家用路由器，并用5v电源给树莓派供电。
 
- 4. 找到树莓派的IP。如果没用路由器的权限，可以运行```sudo nmap -sP -PI -PT 192.168.1.0/24```扫描家庭网络中的所有设备。
+ 4. 找到树莓派的IP。如果没有路由器的权限，可以运行```sudo nmap -sP -PI -PT 192.168.1.0/24```扫描家庭网络中的所有设备。
 
- 5. 打开终端，运行```ssh pi@[IP-of-Raspberry-Pi]``` (将 [IP-of-Raspberry-Pi] 替换为实际的IP地址，比如：*192.168.1.16*)，输入默认密码***raspberry***。
+ 5. 打开终端，运行```ssh pi@[IP-of-Raspberry-Pi]``` (将 [IP-of-Raspberry-Pi] 替换为实际的 IP 地址，比如：*192.168.1.16*)，输入默认密码 ***raspberry***。
 
  6. (可选) 修改密码：```passwd pi```。
 
 ### 3) (可选) 配置图形远程桌面 ([官方文档](https://www.raspberrypi.org/documentation/remote-access/vnc/))
 
-1. 如未安装VNC connect，运行：
+1. 如未安装 VNC connect，运行：
 
   ```
   sudo apt-get update
   sudo apt-get install realvnc-vnc-server realvnc-vnc-viewer
   ```
 
-2. 启用VNC Server，运行```sudo raspi-config```，选择***Interfacing Options***，选择 ***VNC*** > ***Yes***。
+2. 启用 VNC Server，运行```sudo raspi-config```，选择 ***Interfacing Options***，选择 ***VNC*** > ***Yes***。
 
 3. 打开 [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/)，输入树莓派的IP地址并连接。
 
-### 4) 连接Wifi ([官方文档](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md))
+### 4) 连接 Wifi ([官方文档](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md))
 
 1. 运行```cat /etc/network/interfaces```，确认已存在以下内容：
   ```
@@ -216,17 +216,17 @@ node -v
 
 ### 3) Nginx Server
 
-安装nginx：```sudo apt-get install nginx```，开启服务器```sudo /etc/init.d/nginx start```。
+安装 nginx：```sudo apt-get install nginx```，开启服务器```sudo /etc/init.d/nginx start```。
 
 ### 4) 音频视频相关
 
-安装ALSA开发库: ```sudo apt-get install libasound2-dev```。如果返回404，先运行```sudo apt-get upgrade --fix-missing```。
+安装 ALSA 开发库: ```sudo apt-get install libasound2-dev```。如果返回 404，先运行```sudo apt-get upgrade --fix-missing```。
 
-*avconv* 用来转换录像为.mp4格式：```sudo apt-get install libav-tools```
+*avconv* 用来转换录像为 .mp4 格式：```sudo apt-get install libav-tools```
 
-*mpg123* 用来播放.mp3：```sudo apt-get install mpg123```
+*mpg123* 用来播放 .mp3：```sudo apt-get install mpg123```
 
-### 5) 下载repo
+### 5) 下载 repo
 
 ```
 cd ~
@@ -241,7 +241,7 @@ git clone https://github.com/shaqian/PiBot.git
 
 1. 按[电路图](#motor-driver-and-motors)接线。
 
-2. 安装[rpio](https://github.com/jperkin/node-rpio)，运行```npm install rpio```.
+2. 安装 [rpio](https://github.com/jperkin/node-rpio)，运行```npm install rpio```.
 
 3. 运行```node```.
 
@@ -288,7 +288,7 @@ git clone https://github.com/shaqian/PiBot.git
   chmod +x direct.py
   ```
 
-3. 舵机角度由duty cycle控制，一般范围为2.5至11.5。转至中间:
+3. 舵机角度由 duty cycle 控制，一般范围为 2.5 至 11.5。转至中间:
   ```
   ./direct.py 7
   ```
@@ -328,11 +328,11 @@ git clone https://github.com/shaqian/PiBot.git
 
 > 红外接收模块用来接收和解码遥控器信号，然后树莓派发送相同信号即可模拟遥控器。
 
-> 代码借用[这个repo](https://github.com/tanhangbo/RaspberryIR)，修改了端口，以及ST_BASE的值，树莓派3(BCM2837) 为0x3F003000 ，而旧版为0x20003000。
+> 代码借用[这个 repo](https://github.com/tanhangbo/RaspberryIR)，修改了端口，以及 ST_BASE 的值，树莓派 3 (BCM2837) 为 0x3F003000 ，而旧版为 0x20003000。
 
 1. 按[电路图](#ir-receiver)接线。
 
-2. 运行```gpio -v```检查是否已安装wiringPi。没有的话，安装[Wiring Pi](http://wiringpi.com/download-and-install/).
+2. 运行```gpio -v```检查是否已安装 wiringPi。没有的话，安装[Wiring Pi](http://wiringpi.com/download-and-install/).
 
 3. 运行```cd ~/PiBot/PiBotServer/bin```。编译代码生成可执行文件：
   ```
@@ -383,17 +383,17 @@ git clone https://github.com/shaqian/PiBot.git
 
 ### 6) 声卡、麦克风及扬声器
 
-> 树莓派有板载的 3.5mm 音频接口输入但没有输出，所以我用 USB 声卡作为音频输入和输出。
+> 树莓派有板载的 3.5mm 音频输出接口但没有输入，所以我用 USB 声卡作为音频输入和输出。
 
-1. USB声卡接入树莓派并连接麦克风及扬声器。
+1. USB 声卡接入树莓派并连接麦克风及扬声器。
 
 2. 运行 ```arecord -l``` 及 ```aplay -l``` 确认 ***USB Audio Device*** 编号，比如 *card 1*。
 
-3. 录制 5s 的测试录音：```arecord -Dplughw:[n] -fcd -d5 -c1 -twav -r16000 test.wav``` (将 [n] 替换为USB声卡的编号，比如 *Dplughw:1*)。
+3. 录制 5s 的测试录音：```arecord -Dplughw:[n] -fcd -d5 -c1 -twav -r16000 test.wav``` (将 [n] 替换为 USB 声卡的编号，比如 *Dplughw:1*)。
 
-4. 播放测试录音：```aplay -Dplughw:[n] test.wav``` (将 [n] 替换为USB声卡的编号，比如 *Dplughw:1*)。
+4. 播放测试录音：```aplay -Dplughw:[n] test.wav``` (将 [n] 替换为 USB 声卡的编号，比如 *Dplughw:1*)。
 
-5. 将USB声卡设为默认音频设备，运行```sudo vi /lib/modprobe.d/aliases.conf```，写入以下内容并保存：
+5. 将 USB 声卡设为默认音频设备，运行```sudo vi /lib/modprobe.d/aliases.conf```，写入以下内容并保存：
   ```
   options snd_usb_audio index=0
   options snd_bcm2835 index=1
@@ -479,7 +479,7 @@ git clone https://github.com/shaqian/PiBot.git
 
   * 使用 Mac 自带的 QuickTime 播放：
 
-    打开 ***QuickTime***，选择 ***File > Open Location***, 输入 http://[IP-of-Raspberry-Pi]/hls/index.m3u8。
+    打开 ***QuickTime***，选择 ***File > Open Location***, 输入 http://[IP-of-Raspberry-Pi]/hls/index.m3u8
 
   * 或使用网页播放：
 
@@ -488,7 +488,7 @@ git clone https://github.com/shaqian/PiBot.git
     sudo cp ~/PiBot/PiBotServer/public/hls_test.html /var/www/html/hls_test.html
     ```
 
-    ii. 在树莓派或同一网络中的电脑上，打开浏览器，转到 http://[IP-of-Raspberry-Pi]/hls_test.html。
+    ii. 在树莓派或同一网络中的电脑上，打开浏览器，转到 http://[IP-of-Raspberry-Pi]/hls_test.html
 
 ## 配置 Nginx 服务器
 
@@ -498,7 +498,7 @@ git clone https://github.com/shaqian/PiBot.git
 
 2. 将 ***/etc/nginx/sites-enabled/default*** 内的内容替换为 ***~/PiBot/PiBotServer/ngnix/default***。
 
-3. 运行 ```sudo nginx -t``` 测试配置文件。如果没问题，重启 Nginx 服务器：```sudo /etc/init.d/nginx restart```.
+3. 运行 ```sudo nginx -t``` 测试配置文件。如果没问题，重启 Nginx 服务器：```sudo /etc/init.d/nginx restart```
 
 ## 使用网页应用
 
@@ -517,7 +517,7 @@ git clone https://github.com/shaqian/PiBot.git
   sudo npm start
   ```
 
-4. 在浏览器中打开 ```http[s]://[IP-of-Raspberry-Pi]``` (将 IP-of-Raspberry-Pi 替换为实际的网址，比如：*192.168.1.16*).
+4. 在浏览器中打开 ```http[s]://[IP-of-Raspberry-Pi]``` (将 [IP-of-Raspberry-Pi] 替换为实际的网址，比如：*192.168.1.16*)
 
 ##  使用移动应用
 
